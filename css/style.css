@@ -1,1 +1,8 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+.main-container .book-form {
+  padding: 3rem;
+}
+
+.main-container .book-form-content {
+  padding: 0 3rem;
+}
+/*# sourceMappingURL=style.css.map */
