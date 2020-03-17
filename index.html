@@ -36,12 +36,26 @@
                 <input type="checkbox" class="form-check-input" id="read">
                 <label class="form-check-label" for="read">Read status</label>
               </div>
-              <button type="submit" class="btn btn-primary">Create a book</button>
+              <button type="submit" id="add-book-button" class="btn btn-primary">Create a book</button>
             </form>
           </div>
         </div>
         <div class="col-6">
           <h3>All Books</h3>
+          <div class= "book-list"> 
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Author</th>
+                  <th scope="col">Pages</th>
+                  <th scope="col">Read</th>
+                </tr>
+              </thead>
+              <tbody id= "book-info-body">
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
