@@ -12,55 +12,77 @@
 </head>
 
 <body>
-  <main class="main-container">
-    <section class="book-form container-fluid">
-      <div class="row">
-        <div class="col-6">
-          <div class="book-form-content">
-            <h3>Book Form</h3>
-            <form id="book-form">
-              <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter Title">
-              </div>
-              <div class="form-group">
-                <label for="author">Author</label>
-                <input type="text" class="form-control" id="author" placeholder="Enter Author">
-              </div>
-              <div class="form-group">
-                <label for="pages">Pages</label>
-                <input type="number" class="form-control" id="pages" placeholder="Enter Page Number">
-              </div>
+  <div class="wrapper">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand text-white" href="#">My Library</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <button class="new-book-btn" id="new-book-btn">New Book</button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="main-container">
+      <section class="book-form container-fluid">
+        <div class="row">
+          <div class="col-5">
+            <div class="book-form-content" id="book-form-content">
+              <h3>Book Form</h3>
+              <form id="book-form">
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" class="form-control" id="title" placeholder="Enter Title">
+                </div>
+                <div class="form-group">
+                  <label for="author">Author</label>
+                  <input type="text" class="form-control" id="author" placeholder="Enter Author">
+                </div>
+                <div class="form-group">
+                  <label for="pages">Pages</label>
+                  <input type="number" class="form-control" id="pages" placeholder="Enter Page Number">
+                </div>
 
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="read">
-                <label class="form-check-label" for="read">Read status</label>
+                <div class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="read">
+                  <label class="form-check-label" for="read">Read status</label>
+                </div>
+                <button type="submit" id="add-book-button" class="btn btn-primary">Create a book</button>
+              </form>
+            </div>
+          </div>
+          <div class="col-7">
+            <div class="all-books" id="all-books">
+              <h3>All Books</h3>
+              <div class="book-list">
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">Title</th>
+                      <th scope="col">Author</th>
+                      <th scope="col">Pages</th>
+                      <th scope="col">Read</th>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="book-info-body">
+                  </tbody>
+                </table>
               </div>
-              <button type="submit" id="add-book-button" class="btn btn-primary">Create a book</button>
-            </form>
+            </div>
           </div>
         </div>
-        <div class="col-6">
-          <h3>All Books</h3>
-          <div class= "book-list"> 
-            <table class="table">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Title</th>
-                  <th scope="col">Author</th>
-                  <th scope="col">Pages</th>
-                  <th scope="col">Read</th>
-                </tr>
-              </thead>
-              <tbody id= "book-info-body">
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
 
-    </section>
-  </main>
+      </section>
+    </main>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

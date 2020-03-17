@@ -1,8 +1,22 @@
-.main-container .book-form {
+.wrapper .new-book-btn {
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+  border-radius: 15px;
+  padding: 0.3rem 0.7rem;
+}
+
+.wrapper .main-container .book-form {
   padding: 3rem;
 }
 
-.main-container .book-form-content {
+.wrapper .main-container .book-form-content {
   padding: 0 3rem;
+  display: none;
+}
+
+.wrapper .main-container .all-books {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */
