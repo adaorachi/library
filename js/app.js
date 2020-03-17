@@ -23,10 +23,20 @@ function addBookToLibrary(e) {
                     <td>${book.author}</td>
                     <td>${book.pages}</td>
                     <td>${book.read}</td>`
-  info.innerHTML= book_content;
-  document.getElementById("book-info-body").append(info)
+  render("book-info-body",info, book_content)
+  clearInput()
   e.preventDefault();
 }
 
+function render(parent, child, contents) {
+  child.innerHTML= contents
+  document.getElementById(parent).append(child)
 
+}
+
+function clearInput() {
+  document.getElementById("book-form").reset();
+  
+
+}
 
