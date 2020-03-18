@@ -1,3 +1,4 @@
+/* global firebase,  */
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD6hxwAmFRu0bM38tQfw4_0ihdfh4TfU0o',
@@ -12,7 +13,6 @@ const firebaseConfig = {
 
 
 // Initialize Firebase
-let firebase;
 firebase.initializeApp(firebaseConfig);
 this.database = firebase.database();
 
