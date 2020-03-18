@@ -13,10 +13,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-this.database = firebase.database();
+const database = firebase.database();
 
 function writeData() {
-  firebase.database().ref('Books').push({
+  database.ref('Books').push({
     title: document.getElementById('title').value,
     author: document.getElementById('author').value,
     pages: document.getElementById('pages').value,
