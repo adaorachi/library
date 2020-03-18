@@ -11,7 +11,6 @@ const firebaseConfig = {
   measurementId: 'G-S1W30G7EQH',
 };
 
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 this.database = firebase.database();
@@ -32,13 +31,12 @@ function Book(title, author, pages, read) {
   this.read = read;
 
   this.deleteBook = () => {
-    function deleteBookFunc(e) {
+    document.getElementById('book-info-body').addEventListener('click', (e) => {
       if (e.target.classList.contains('delete_book')) {
-        const [id] = e.target.id;
+        const { id } = e.target;
         document.getElementById(id).parentElement.parentElement.remove();
       }
-    }
-    document.getElementById('book-info-body').addEventListener('click', deleteBookFunc);
+    });
   };
 }
 
@@ -61,9 +59,9 @@ function UI() {
 
   this.readStatus = () => {
     document.getElementById('book-info-body').addEventListener('click', (e) => {
-      if (e.target.classList.contains('readStatus')) {
-        const [id] = e.target.id;
-        const [readContent] = document.getElementById(id).textContent;
+      if (e.target.classList.contains('read-status')) {
+        const { id } = e.target;
+        const readContent = document.getElementById(id).textContent;
 
         if (readContent === 'Read') {
           document.getElementById(id).innerText = 'Unread';
@@ -101,7 +99,7 @@ function addBookToLibrary(e) {
                       <td>${item.pages}</td>
                       <td>${read}</td>
                       <td><button type='button' class='btn-danger btn btn-sm delete_book' id='delete_book_${index}'>Delete</button></td>
-                      <td><button type='button' class='btn-secondary btn btn-sm readStatus' id='readStatus_${index}'>${readStatus}</button></td>
+                      <td><button type='button' class='btn-secondary btn btn-sm read-status' id='read-status_${index}'>${readStatus}</button></td>
                       </tr>`;
     });
 
