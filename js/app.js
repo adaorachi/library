@@ -1,3 +1,30 @@
+
+ var firebaseConfig = {
+  apiKey: "AIzaSyD6hxwAmFRu0bM38tQfw4_0ihdfh4TfU0o",
+  authDomain: "my-library-681b1.firebaseapp.com",
+  databaseURL: "https://my-library-681b1.firebaseio.com",
+  projectId: "my-library-681b1",
+  storageBucket: "my-library-681b1.appspot.com",
+  messagingSenderId: "261869283629",
+  appId: "1:261869283629:web:4897de4a2b52dd49100ba4",
+  measurementId: "G-S1W30G7EQH"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+this.database = firebase.database();
+ 
+function writeData() {
+  firebase.database().ref("Books").push({
+    title: document.getElementById("title").value,
+    author: document.getElementById("author").value,
+    pages: document.getElementById("pages").value,
+    read: document.getElementById("read").checked
+  })
+
+  addBookToLibrary;
+ 
+}
+
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -6,6 +33,7 @@ function Book(title, author, pages, read) {
 }
 
 const add_button = document.querySelector("#add-book-button")
+add_button.addEventListener("click", writeData)
 add_button.addEventListener("click", addBookToLibrary)
 let myLibrary = [];
 
@@ -17,6 +45,10 @@ function addBookToLibrary(e) {
   const read = document.getElementById("read").checked;
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
+  var addBookRef = firebase.database().ref("myLibrary");
+  addBookRef.on('value', function(snapshot) {
+  console.log(snapshot.val());
+  });
 
   let book_content = '';
   myLibrary.forEach((item, index) => {
@@ -32,6 +64,7 @@ function addBookToLibrary(e) {
                     </tr>`;
   })
 
+  
   render("book-info-body", book_content);
 
   let book_container = document.getElementById('all-books');
