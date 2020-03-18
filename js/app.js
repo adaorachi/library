@@ -1,5 +1,5 @@
 
-let firebaseConfig = {
+const firebaseConfig = {
   apiKey: 'AIzaSyD6hxwAmFRu0bM38tQfw4_0ihdfh4TfU0o',
   authDomain: 'my-library-681b1.firebaseapp.com',
   databaseURL: 'https://my-library-681b1.firebaseio.com',
@@ -7,7 +7,7 @@ let firebaseConfig = {
   storageBucket: 'my-library-681b1.appspot.com',
   messagingSenderId: '261869283629',
   appId: '1:261869283629:web:4897de4a2b52dd49100ba4',
-  measurementId: 'G-S1W30G7EQH'
+  measurementId: 'G-S1W30G7EQH',
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -18,9 +18,8 @@ function writeData() {
     title: document.getElementById('title').value,
     author: document.getElementById('author').value,
     pages: document.getElementById('pages').value,
-    read: document.getElementById('read').checked
+    read: document.getElementById('read').checked,
   })
-
 }
 
 function Book(title, author, pages, read) {
@@ -30,18 +29,19 @@ function Book(title, author, pages, read) {
   this.read = read;
 
   this.deleteBook = () => {
-    document.getElementById('book-info-body').addEventListener('click', function (e) {
+    document.getElementById('book-info-body').addEventListener('click', deleteBookFunc);
+    function deleteBookFunc(e) {
       if (e.target.classList.contains('delete_book')) {
-        let id = e.target.id
-        document.getElementById(id).parentElement.parentElement.remove()
+        const id = e.target.id;
+        document.getElementById(id).parentElement.parentElement.remove();
       }
-    })
+    }
   }
 }
 
 function UI() {
   this.render = (parent, child) => {
-    document.getElementById(parent).innerHTML = child
+    document.getElementById(parent).innerHTML = child;
   }
 
   this.clearInput = () => {
@@ -49,17 +49,17 @@ function UI() {
   }
 
   this.displayForm = () => {
-    let newBook = document.querySelector('#new-book-btn');
+    const newBook = document.querySelector('#new-book-btn');
     newBook.addEventListener('click', function (e) {
       document.querySelector('#book-form-content').style.display = 'block';
-      e.preventDefault()
+      e.preventDefault();
     });
   }
 
   this.readStatus = () => {
     document.getElementById('book-info-body').addEventListener('click', function (e) {
       if (e.target.classList.contains('readStatus')) {
-        let id = e.target.id
+        const id = e.target.id;
         let readContent = document.getElementById(id).textContent;
 
         if (readContent === 'Read') {
@@ -74,9 +74,9 @@ function UI() {
   }
 }
 
-const ui = new UI;
-const book = new Book;
-let myLibrary = [];
+const ui = new UI();
+const book = new Book();
+const myLibrary = [];
 
 
 function addBookToLibrary(e) {
@@ -90,8 +90,8 @@ function addBookToLibrary(e) {
   if (title !== '' || author !== '') {
     let bookContent = '';
     myLibrary.forEach((item, index) => {
-      let read = item.read ? 'Read' : 'Unread';
-      let readStatus = item.read ? 'Unread' : 'Read';
+      const read = item.read ? 'Read' : 'Unread';
+      const readStatus = item.read ? 'Unread' : 'Read';
       bookContent += `<tr>
                       <th scope='row'>${item.title}</th>
                       <td>${item.author}</td>
@@ -104,21 +104,20 @@ function addBookToLibrary(e) {
 
     ui.render('book-info-body', bookContent);
 
-    let bookContainer = document.getElementById('all-books');
+    const bookContainer = document.getElementById('all-books');
     bookContainer.style.display = 'block';
 
 
     ui.clearInput();
   } else {
-    alert('Please fill all inputs')
+    alert('Please fill all inputs');
   }
   e.preventDefault();
-
 }
 
-const addButton = document.querySelector('#add-book-button')
-addButton.addEventListener('click', writeData)
-addButton.addEventListener('click', addBookToLibrary)
+const addButton = document.querySelector('#add-book-button');
+addButton.addEventListener('click', writeData);
+addButton.addEventListener('click', addBookToLibrary);
 
 ui.displayForm();
 ui.readStatus();
