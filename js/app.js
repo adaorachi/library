@@ -49,8 +49,8 @@ function UI() {
   }
 
   this.displayForm = () => {
-    let new_book = document.querySelector('#new-book-btn');
-    new_book.addEventListener('click', function (e) {
+    let newBook = document.querySelector('#new-book-btn');
+    newBook.addEventListener('click', function (e) {
       document.querySelector('#book-form-content').style.display = 'block';
       e.preventDefault()
     });
@@ -58,14 +58,14 @@ function UI() {
 
   this.readStatus = () => {
     document.getElementById('book-info-body').addEventListener('click', function (e) {
-      if (e.target.classList.contains('read_status')) {
+      if (e.target.classList.contains('readStatus')) {
         let id = e.target.id
-        let read_content = document.getElementById(id).textContent;
+        let readContent = document.getElementById(id).textContent;
 
-        if (read_content == 'Read') {
+        if (readContent === 'Read') {
           document.getElementById(id).innerText = 'Unread';
           document.getElementById(id).parentElement.previousElementSibling.previousElementSibling.innerText = 'Read';
-        } else if (read_content == 'Unread') {
+        } else if (readContent === 'Unread') {
           document.getElementById(id).innerText = 'Read';
           document.getElementById(id).parentElement.previousElementSibling.previousElementSibling.innerText = 'Unread';
         }
@@ -76,10 +76,6 @@ function UI() {
 
 const ui = new UI;
 const book = new Book;
-
-const add_button = document.querySelector("#add-book-button")
-add_button.addEventListener("click", writeData)
-add_button.addEventListener("click", addBookToLibrary)
 let myLibrary = [];
 
 
@@ -90,30 +86,26 @@ function addBookToLibrary(e) {
   const read = document.getElementById("read").checked;
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
-  const addBookRef = firebase.database().ref("myLibrary");
-  addBookRef.on('value', function (snapshot) {
-    console.log(snapshot.val());
-  });
 
-  if (title != '' || author != '') {
-    let book_content = '';
+  if (title !== '' || author !== '') {
+    let bookContent = '';
     myLibrary.forEach((item, index) => {
       let read = item.read ? 'Read' : 'Unread';
-      let read_status = item.read ? 'Unread' : 'Read';
-      book_content += `<tr>
+      let readStatus = item.read ? 'Unread' : 'Read';
+      bookContent += `<tr>
                       <th scope="row">${item.title}</th>
                       <td>${item.author}</td>
                       <td>${item.pages}</td>
                       <td>${read}</td>
                       <td><button type="button" class="btn-danger btn btn-sm delete_book" id="delete_book_${index}">Delete</button></td>
-                      <td><button type="button" class="btn-secondary btn btn-sm read_status" id="read_status_${index}">${read_status}</button></td>
+                      <td><button type="button" class="btn-secondary btn btn-sm readStatus" id="readStatus_${index}">${readStatus}</button></td>
                       </tr>`;
     })
 
-    ui.render("book-info-body", book_content);
+    ui.render("book-info-body", bookContent);
 
-    let book_container = document.getElementById('all-books');
-    book_container.style.display = 'block';
+    let bookContainer = document.getElementById('all-books');
+    bookContainer.style.display = 'block';
 
 
     ui.clearInput();
@@ -124,6 +116,9 @@ function addBookToLibrary(e) {
 
 }
 
+const addButton = document.querySelector("#add-book-button")
+addButton.addEventListener("click", writeData)
+addButton.addEventListener("click", addBookToLibrary)
 
 ui.displayForm();
 ui.readStatus();
