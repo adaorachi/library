@@ -1,24 +1,24 @@
 
-var firebaseConfig = {
-  apiKey: "AIzaSyD6hxwAmFRu0bM38tQfw4_0ihdfh4TfU0o",
-  authDomain: "my-library-681b1.firebaseapp.com",
-  databaseURL: "https://my-library-681b1.firebaseio.com",
-  projectId: "my-library-681b1",
-  storageBucket: "my-library-681b1.appspot.com",
-  messagingSenderId: "261869283629",
-  appId: "1:261869283629:web:4897de4a2b52dd49100ba4",
-  measurementId: "G-S1W30G7EQH"
+let firebaseConfig = {
+  apiKey: 'AIzaSyD6hxwAmFRu0bM38tQfw4_0ihdfh4TfU0o',
+  authDomain: 'my-library-681b1.firebaseapp.com',
+  databaseURL: 'https://my-library-681b1.firebaseio.com',
+  projectId: 'my-library-681b1',
+  storageBucket: 'my-library-681b1.appspot.com',
+  messagingSenderId: '261869283629',
+  appId: '1:261869283629:web:4897de4a2b52dd49100ba4',
+  measurementId: 'G-S1W30G7EQH'
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 this.database = firebase.database();
 
 function writeData() {
-  firebase.database().ref("Books").push({
-    title: document.getElementById("title").value,
-    author: document.getElementById("author").value,
-    pages: document.getElementById("pages").value,
-    read: document.getElementById("read").checked
+  firebase.database().ref('Books').push({
+    title: document.getElementById('title').value,
+    author: document.getElementById('author').value,
+    pages: document.getElementById('pages').value,
+    read: document.getElementById('read').checked
   })
 
 }
@@ -45,7 +45,7 @@ function UI() {
   }
 
   this.clearInput = () => {
-    document.getElementById("book-form").reset();
+    document.getElementById('book-form').reset();
   }
 
   this.displayForm = () => {
@@ -80,10 +80,10 @@ let myLibrary = [];
 
 
 function addBookToLibrary(e) {
-  const title = document.getElementById("title").value;
-  const author = document.getElementById("author").value;
-  const pages = document.getElementById("pages").value;
-  const read = document.getElementById("read").checked;
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  const read = document.getElementById('read').checked;
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
 
@@ -93,16 +93,16 @@ function addBookToLibrary(e) {
       let read = item.read ? 'Read' : 'Unread';
       let readStatus = item.read ? 'Unread' : 'Read';
       bookContent += `<tr>
-                      <th scope="row">${item.title}</th>
+                      <th scope='row'>${item.title}</th>
                       <td>${item.author}</td>
                       <td>${item.pages}</td>
                       <td>${read}</td>
-                      <td><button type="button" class="btn-danger btn btn-sm delete_book" id="delete_book_${index}">Delete</button></td>
-                      <td><button type="button" class="btn-secondary btn btn-sm readStatus" id="readStatus_${index}">${readStatus}</button></td>
+                      <td><button type='button' class='btn-danger btn btn-sm delete_book' id='delete_book_${index}'>Delete</button></td>
+                      <td><button type='button' class='btn-secondary btn btn-sm readStatus' id='readStatus_${index}'>${readStatus}</button></td>
                       </tr>`;
     })
 
-    ui.render("book-info-body", bookContent);
+    ui.render('book-info-body', bookContent);
 
     let bookContainer = document.getElementById('all-books');
     bookContainer.style.display = 'block';
@@ -116,9 +116,9 @@ function addBookToLibrary(e) {
 
 }
 
-const addButton = document.querySelector("#add-book-button")
-addButton.addEventListener("click", writeData)
-addButton.addEventListener("click", addBookToLibrary)
+const addButton = document.querySelector('#add-book-button')
+addButton.addEventListener('click', writeData)
+addButton.addEventListener('click', addBookToLibrary)
 
 ui.displayForm();
 ui.readStatus();
