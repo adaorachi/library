@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/adaorachi/library/issues"
   },
-  "homepage": "https://github.com/adaorachi/library#readme"
+  "homepage": "https://github.com/adaorachi/library#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1"
+  }
 }
