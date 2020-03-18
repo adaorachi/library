@@ -13,7 +13,7 @@
 In this project, we build a small library app using Javascript. The user can create a new book, and it will display a table containing all the books created with their information.
 
 
-<div align="center">[Live version](https://raw.githack.com/adaorachi/library/my_library/index.html)</div>
+Live version of the project: [Live version](https://raw.githack.com/adaorachi/library/my_library/index.html)
 
 
 Link for project specifications: [Odin-Project](https://www.theodinproject.com/courses/javascript/lessons/library)
