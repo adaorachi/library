@@ -10,6 +10,7 @@ const firebaseConfig = {
   measurementId: 'G-S1W30G7EQH',
 };
 // Initialize Firebase
+const firebase;
 firebase.initializeApp(firebaseConfig);
 this.database = firebase.database();
 
@@ -29,20 +30,21 @@ function Book(title, author, pages, read) {
   this.read = read;
 
   this.deleteBook = () => {
-    document.getElementById('book-info-body').addEventListener('click', deleteBookFunc);
     function deleteBookFunc(e) {
       if (e.target.classList.contains('delete_book')) {
         const id = e.target.id;
         document.getElementById(id).parentElement.parentElement.remove();
       }
     }
-  }
+    document.getElementById('book-info-body').addEventListener('click', deleteBookFunc);
+
+  };
 }
 
 function UI() {
   this.render = (parent, child) => {
     document.getElementById(parent).innerHTML = child;
-  }
+  };
 
   this.clearInput = () => {
     document.getElementById('book-form').reset();
@@ -50,14 +52,14 @@ function UI() {
 
   this.displayForm = () => {
     const newBook = document.querySelector('#new-book-btn');
-    newBook.addEventListener('click', function (e) {
+    newBook.addEventListener('click', (e) => {
       document.querySelector('#book-form-content').style.display = 'block';
       e.preventDefault();
     });
   };
 
   this.readStatus = () => {
-    document.getElementById('book-info-body').addEventListener('click', function (e) {
+    document.getElementById('book-info-body').addEventListener('click', (e) => {
       if (e.target.classList.contains('readStatus')) {
         const id = e.target.id;
         const readContent = document.getElementById(id).textContent;
