@@ -9,7 +9,10 @@ const firebaseConfig = {
   appId: '1:261869283629:web:4897de4a2b52dd49100ba4',
   measurementId: 'G-S1W30G7EQH',
 };
+
+
 // Initialize Firebase
+const firebase = new Firebase('https://my-library-681b1.firebaseio.com');
 firebase.initializeApp(firebaseConfig);
 this.database = firebase.database();
 
@@ -31,12 +34,11 @@ function Book(title, author, pages, read) {
   this.deleteBook = () => {
     function deleteBookFunc(e) {
       if (e.target.classList.contains('delete_book')) {
-        const id = e.target.id;
+        const [id] = e.target.id;
         document.getElementById(id).parentElement.parentElement.remove();
       }
     }
     document.getElementById('book-info-body').addEventListener('click', deleteBookFunc);
-
   };
 }
 
@@ -61,7 +63,7 @@ function UI() {
     document.getElementById('book-info-body').addEventListener('click', (e) => {
       if (e.target.classList.contains('readStatus')) {
         const id = e.target.id;
-        const readContent = document.getElementById(id).textContent;
+        const [readContent] = document.getElementById(id).textContent;
 
         if (readContent === 'Read') {
           document.getElementById(id).innerText = 'Unread';
