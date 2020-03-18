@@ -12,7 +12,7 @@ const firebaseConfig = {
 
 
 // Initialize Firebase
-const firebase = new Firebase('https://my-library-681b1.firebaseio.com');
+let firebase;
 firebase.initializeApp(firebaseConfig);
 this.database = firebase.database();
 
@@ -62,7 +62,7 @@ function UI() {
   this.readStatus = () => {
     document.getElementById('book-info-body').addEventListener('click', (e) => {
       if (e.target.classList.contains('readStatus')) {
-        const id = e.target.id;
+        const [id] = e.target.id;
         const [readContent] = document.getElementById(id).textContent;
 
         if (readContent === 'Read') {
