@@ -1,0 +1,28 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "A library app built with JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adaorachi/library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adaorachi/library/issues"
+  },
+  "homepage": "https://github.com/adaorachi/library#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1"
+  },
+  "dependencies": {
+    "firebase": "^7.11.0"
+  }
+}

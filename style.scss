@@ -1,0 +1,25 @@
+.wrapper {
+  .new-book-btn {
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #333;
+    border-radius: 15px;
+    padding: 0.3rem 0.7rem;
+  }
+  
+  .main-container {
+    .book-form {
+      padding: 3rem;
+    }
+
+    .book-form-content {
+      padding: 0 3rem;
+      display: none;
+    }
+
+    .all-books {
+      display: none;
+    }
+  }
+}
