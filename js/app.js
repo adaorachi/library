@@ -20,8 +20,6 @@ function writeData() {
     pages: document.getElementById("pages").value,
     read: document.getElementById("read").checked
   })
-
-  addBookToLibrary;
  
 }
 
@@ -45,7 +43,7 @@ function addBookToLibrary(e) {
   const read = document.getElementById("read").checked;
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
-  var addBookRef = firebase.database().ref("myLibrary");
+  const addBookRef = firebase.database().ref("myLibrary");
   addBookRef.on('value', function(snapshot) {
   console.log(snapshot.val());
   });
