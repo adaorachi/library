@@ -19,7 +19,7 @@ function writeData() {
     author: document.getElementById('author').value,
     pages: document.getElementById('pages').value,
     read: document.getElementById('read').checked,
-  })
+  });
 }
 
 function Book(title, author, pages, read) {
@@ -46,7 +46,7 @@ function UI() {
 
   this.clearInput = () => {
     document.getElementById('book-form').reset();
-  }
+  };
 
   this.displayForm = () => {
     const newBook = document.querySelector('#new-book-btn');
@@ -54,13 +54,13 @@ function UI() {
       document.querySelector('#book-form-content').style.display = 'block';
       e.preventDefault();
     });
-  }
+  };
 
   this.readStatus = () => {
     document.getElementById('book-info-body').addEventListener('click', function (e) {
       if (e.target.classList.contains('readStatus')) {
         const id = e.target.id;
-        let readContent = document.getElementById(id).textContent;
+        const readContent = document.getElementById(id).textContent;
 
         if (readContent === 'Read') {
           document.getElementById(id).innerText = 'Unread';
@@ -70,8 +70,8 @@ function UI() {
           document.getElementById(id).parentElement.previousElementSibling.previousElementSibling.innerText = 'Unread';
         }
       }
-    })
-  }
+    });
+  };
 }
 
 const ui = new UI();
@@ -100,7 +100,7 @@ function addBookToLibrary(e) {
                       <td><button type='button' class='btn-danger btn btn-sm delete_book' id='delete_book_${index}'>Delete</button></td>
                       <td><button type='button' class='btn-secondary btn btn-sm readStatus' id='readStatus_${index}'>${readStatus}</button></td>
                       </tr>`;
-    })
+    });
 
     ui.render('book-info-body', bookContent);
 
@@ -110,7 +110,7 @@ function addBookToLibrary(e) {
 
     ui.clearInput();
   } else {
-    alert('Please fill all inputs');
+    document.querySelector('.msg-alert').innerHTML = '<span class="alert alert-danger">Please fill in all inputs</span>';
   }
   e.preventDefault();
 }
